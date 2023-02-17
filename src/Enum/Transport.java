@@ -61,6 +61,6 @@ public abstract class Transport<T extends Driver> implements Competing {
                 " Модель - " + model + "," +
                 " Мощность двигателя - " + engineVolume + "," +
                 " водитель - " + getDriver().getName() +
-                " с разрешенной грузоподъемностью " + L;
+                " с разрешенной грузоподъемностью ";
             }
 }

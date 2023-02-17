@@ -46,7 +46,7 @@ public class Lorry extends Transport<DriverC> {
 }
 
 enum LoadСapacity {
-    N1(0f, 3.5f),
+    N1(null, 3.5f),
     N2(3.6f, 12f),
     N3(12.1f, 12.9f);
     private Float loadMin;
@@ -71,8 +71,15 @@ enum LoadСapacity {
     }
     @Override
     public String toString() {
-        return "loadMin=" + loadMin +
-                ", loadMax=" + loadMax +
-                '}';
+        String loadCapasity = "Грузоподъемность: ";
+        if (loadMin == null || loadMin == 0) {
+            loadCapasity = loadCapasity + " до " + loadMax + " тонн";
+        } else if (loadMax == null || loadMax == 0) {
+            loadCapasity = loadCapasity + " свыше " + loadMin + " тонн";
+        } else {
+            loadCapasity = loadCapasity + " от " + loadMin + " до " + loadMax + " тонн";
+        }
+
+            return loadCapasity;
     }
 }

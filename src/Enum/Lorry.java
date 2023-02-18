@@ -14,6 +14,11 @@ public class Lorry extends Transport<DriverC> {
     }
 
     @Override
+    public void printType() {
+
+    }
+
+    @Override
     public void start() {
         System.out.println("Грузовик марки " + getBrand() + " начал движение.");
     }
@@ -46,9 +51,9 @@ public class Lorry extends Transport<DriverC> {
 }
 
 enum LoadСapacity {
-    N1(null, 3.5f),
+    N1(0f, 3.5f),
     N2(3.6f, 12f),
-    N3(12.1f, 12.9f);
+    N3(12.1f, 100f);
     private Float loadMin;
     private Float loadMax;
 
@@ -57,29 +62,30 @@ enum LoadСapacity {
         this.loadMax = loadMax;
     }
 
-     public float getLoadMin() {
+    LoadСapacity() {
+            }
+
+    public float getLoadMin() {
         return loadMin;
-    }
-    public void setLoadMin(Float loadMin) {
-        this.loadMin = loadMin;
     }
     public float getLoadMax() {
         return loadMax;
     }
-    public void setLoadMax(Float loadMax) {
-        this.loadMax = loadMax;
+
+    public static LoadCapacity getValue(Float value) {
+        for (LoadСapacity e : LoadСapacity.values()) {
+            if (value >= e.getLoadMin() && value <= e.getLoadMax()) {
+                return e;
+            }
+        }
+        return null;
     }
+
     @Override
     public String toString() {
-        String loadCapasity = "Грузоподъемность: ";
-        if (loadMin == null || loadMin == 0) {
-            loadCapasity = loadCapasity + " до " + loadMax + " тонн";
-        } else if (loadMax == null || loadMax == 0) {
-            loadCapasity = loadCapasity + " свыше " + loadMin + " тонн";
-        } else {
-            loadCapasity = loadCapasity + " от " + loadMin + " до " + loadMax + " тонн";
-        }
-
-            return loadCapasity;
+        return "LoadСapacity{" +
+                "loadMin=" + loadMin +
+                ", loadMax=" + loadMax +
+                '}' + super.toString();
     }
 }

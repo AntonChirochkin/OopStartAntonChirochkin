@@ -9,6 +9,11 @@ public class Car extends Transport<DriverB> {
     }
 
     @Override
+    public void printType() {
+
+    }
+
+    @Override
     public void start() {
         System.out.println("Автомобиль марки " + getBrand() + " начал движение.");
     }
@@ -38,6 +43,8 @@ public class Car extends Transport<DriverB> {
         int maxSpeed = (int) (maxVolume + (maxVolume - minVolume) * Math.random()); // в данной строке мы привели значения к переменной int и создали формулу выборы случайного значения скорости в диапазоне от 100 до 200
         System.out.println("Максимальная скорость автомобиля " + maxSpeed);
     }
+
+
 }
 enum Bodytape {
     SEDAN("СЕДАН"),
@@ -56,9 +63,12 @@ enum Bodytape {
     public String getBodyTape() {
         return bodyTape;
     }
+
     @Override
     public String toString() {
-        return "Тип кузова " + bodyTape;
+        return "Bodytape{" +
+                "bodyTape='" + bodyTape + '\'' +
+                '}' + super.toString();
     }
 }
 

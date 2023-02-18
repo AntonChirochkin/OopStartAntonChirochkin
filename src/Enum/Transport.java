@@ -51,6 +51,8 @@ public abstract class Transport<T extends Driver> implements Competing {
         this.engineVolume = engineVolume;
     }
 
+    public abstract void printType();
+
     public abstract void start();
     public abstract void finish();
 
@@ -61,6 +63,6 @@ public abstract class Transport<T extends Driver> implements Competing {
                 " Модель - " + model + "," +
                 " Мощность двигателя - " + engineVolume + "," +
                 " водитель - " + getDriver().getName() +
-                " с разрешенной грузоподъемностью ";
+                " с разрешенной грузоподъемностью " +  LoadСapacity.values();
             }
 }

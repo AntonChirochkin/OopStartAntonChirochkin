@@ -13,11 +13,6 @@ public class Bus extends Transport<DriverD> {
     }
 
     @Override
-    public void printType() {
-
-    }
-
-    @Override
     public void start() {
         System.out.println("Автобус марки " + getBrand() + " начал движение.");
     }
@@ -45,6 +40,19 @@ public class Bus extends Transport<DriverD> {
         int maxVolume = 170;
         int maxSpeed = (int) (maxVolume + (maxVolume - minVolume) * Math.random()); // в данной строке мы привели значения к переменной int и создали формулу выборы случайного значения скорости в диапазоне от 100 до 200
         System.out.println("Максимальная скорость автобуса " + maxSpeed);
+    }
+    @Override
+    public String toString () {
+        return "Transport: " +
+                "Марка - " + getBrand() + "," +
+                " Модель - " + getModel() + "," +
+                " Мощность двигателя - " + getEngineVolume() + "," +
+                " водитель - " + getDriver().getName() +
+                " Вместительностью салона - " + size;
+    }
+    @Override
+    public Type getType() {
+        return Type.BUS;
     }
 }
 
@@ -75,9 +83,8 @@ enum Size{
 
     @Override
     public String toString() {
-        return "Size{" +
-                "min=" + min +
-                ", max=" + max +
-                '}' + super.toString();
+        return " от " +
+                 min +
+                ", до " + max;
     }
 }

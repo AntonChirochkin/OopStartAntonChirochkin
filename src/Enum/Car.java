@@ -1,4 +1,5 @@
 package Enum;
+
 //
 public class Car extends Transport<DriverB> {
     Bodytape bodyTape;
@@ -8,10 +9,6 @@ public class Car extends Transport<DriverB> {
         this.bodyTape = bodyTape;
     }
 
-    @Override
-    public void printType() {
-
-    }
 
     @Override
     public void start() {
@@ -44,8 +41,22 @@ public class Car extends Transport<DriverB> {
         System.out.println("Максимальная скорость автомобиля " + maxSpeed);
     }
 
+    @Override
+    public String toString() {
+        return "Transport: " +
+                "Марка - " + getBrand() + "," +
+                " Модель - " + getModel() + "," +
+                " Мощность двигателя - " + getEngineVolume() + "," +
+                " водитель - " + getDriver().getName() +
+                " Тип кузова - " + bodyTape;
+    }
 
+    @Override
+    public Type getType() {
+        return Type.CAR;
+    }
 }
+
 enum Bodytape {
     SEDAN("СЕДАН"),
     HATBACK("ХЕТЧБЭК"),
@@ -57,18 +68,18 @@ enum Bodytape {
     VAN("ФУРГОН"),
     MINIVAN("МИНИВЭН");
     String bodyTape;
+
     Bodytape(String bodyTape) {
         this.bodyTape = bodyTape;
     }
+
     public String getBodyTape() {
         return bodyTape;
     }
 
     @Override
     public String toString() {
-        return "Bodytape{" +
-                "bodyTape='" + bodyTape + '\'' +
-                '}' + super.toString();
+        return bodyTape;
     }
 }
 

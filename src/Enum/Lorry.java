@@ -14,11 +14,6 @@ public class Lorry extends Transport<DriverC> {
     }
 
     @Override
-    public void printType() {
-
-    }
-
-    @Override
     public void start() {
         System.out.println("Грузовик марки " + getBrand() + " начал движение.");
     }
@@ -48,6 +43,20 @@ public class Lorry extends Transport<DriverC> {
         int maxSpeed = (int) (maxVolume + (maxVolume - minVolume) * Math.random()); // в данной строке мы привели значения к переменной int и создали формулу выборы случайного значения скорости в диапазоне от 100 до 200
         System.out.println("Максимальная скорость грузовика " + maxSpeed);
     }
+
+    @Override
+    public String toString () {
+        return "Transport: " +
+                "Марка - " + getBrand() + "," +
+                " Модель - " + getModel() + "," +
+                " Мощность двигателя - " + getEngineVolume() + "," +
+                " водитель - " + getDriver().getName() +
+                " Грузоподъемностью - " + loadСapacity;
+    }
+    @Override
+    public Type getType() {
+        return Type.LORRY;
+    }
 }
 
 enum LoadСapacity {
@@ -72,20 +81,18 @@ enum LoadСapacity {
         return loadMax;
     }
 
-    public static LoadCapacity getValue(Float value) {
-        for (LoadСapacity e : LoadСapacity.values()) {
-            if (value >= e.getLoadMin() && value <= e.getLoadMax()) {
-                return e;
-            }
-        }
-        return null;
-    }
+//    public static LoadCapacity getValue(Float value) {
+//        for (LoadСapacity e : LoadСapacity.values()) {
+//            if (value >= e.getLoadMin() && value <= e.getLoadMax()) {
+//                return e;
+//            }
+//        }
+//        return null;
+//    }
 
     @Override
     public String toString() {
-        return "LoadСapacity{" +
-                "loadMin=" + loadMin +
-                ", loadMax=" + loadMax +
-                '}' + super.toString();
+        return  " от " + loadMin +
+                ", до " + loadMax + " " + super.toString();
     }
 }

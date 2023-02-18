@@ -1,4 +1,5 @@
 package Enum;
+
 //
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
@@ -51,18 +52,10 @@ public abstract class Transport<T extends Driver> implements Competing {
         this.engineVolume = engineVolume;
     }
 
-    public abstract void printType();
+    public abstract Type getType();
 
     public abstract void start();
+
     public abstract void finish();
 
-    @Override
-    public String toString () {
-        return "Transport: " +
-                "Марка - " + brand + "," +
-                " Модель - " + model + "," +
-                " Мощность двигателя - " + engineVolume + "," +
-                " водитель - " + getDriver().getName() +
-                " с разрешенной грузоподъемностью " +  LoadСapacity.values();
-            }
 }

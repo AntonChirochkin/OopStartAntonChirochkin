@@ -57,6 +57,10 @@ public class Lorry extends Transport<DriverC> {
     public Type getType() {
         return Type.LORRY;
     }
+    @Override
+    public void printTipe() {
+        System.out.println(getBrand() + " " + getModel() + " " + loadСapacity);
+    }
 }
 
 enum LoadСapacity {

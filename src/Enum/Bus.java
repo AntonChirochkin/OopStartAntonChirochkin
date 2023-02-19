@@ -54,6 +54,10 @@ public class Bus extends Transport<DriverD> {
     public Type getType() {
         return Type.BUS;
     }
+    @Override
+    public void printTipe() {
+        System.out.println(getBrand() + " " + getModel() + " " + size);
+    }
 }
 
 enum Size{

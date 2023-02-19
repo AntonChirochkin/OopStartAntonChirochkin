@@ -55,6 +55,11 @@ public class Car extends Transport<DriverB> {
     public Type getType() {
         return Type.CAR;
     }
+
+    @Override
+    public void printTipe() {
+        System.out.println(getBrand() + " " + getModel() + " " + bodyTape);
+    }
 }
 
 enum Bodytape {

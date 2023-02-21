@@ -23,11 +23,10 @@ public class Main {
             Lorry lorry2 = new Lorry("Scania", "R", 730, driverC, LoadСapacity.N2);
             Lorry lorry3 = new Lorry("Iveco", "S-Way", 400, driverC, LoadСapacity.N3);
 
-        System.out.println(car2);
-        System.out.println(bus2);
-        System.out.println(lorry2);
 
-        checkTransport(car, bus, lorry);
+        car.passDiagnostics();
+        bus.passDiagnostics();
+        lorry.passDiagnostics();
 
 
     }

@@ -21,6 +21,9 @@ public class Bus extends Transport<DriverD> {
     public void finish() {
         System.out.println("Автобус марки " + getBrand() + " закончил движение.");
     }
+
+
+
     @Override
     public void pitStop() {
         System.out.println("Пит-стоп автобуса");
@@ -57,6 +60,15 @@ public class Bus extends Transport<DriverD> {
     @Override
     public void printTipe() {
         System.out.println(getBrand() + " " + getModel() + " " + size);
+    }
+
+//    @Override
+//    public boolean diagnostics() throws TransportTypeException {
+//        throw new TransportTypeException("");
+//    }
+    @Override
+    public boolean passDiagnostics() throws TransportTypeException {
+        throw new TransportTypeException("Автобусы диагностику проходить не должны");
     }
 }
 

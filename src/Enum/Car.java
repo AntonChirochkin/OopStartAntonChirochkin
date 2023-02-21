@@ -60,7 +60,12 @@ public class Car extends Transport<DriverB> {
     public void printTipe() {
         System.out.println(getBrand() + " " + getModel() + " " + bodyTape);
     }
-}
+
+    @Override
+    public boolean passDiagnostics() {
+        return this.isDiagnosticsPassed();
+    }
+  }
 
 enum Bodytape {
     SEDAN("СЕДАН"),

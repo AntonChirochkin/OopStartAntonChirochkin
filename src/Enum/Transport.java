@@ -6,6 +6,7 @@ public abstract class Transport<T extends Driver> implements Competing {
     private final String model;
     private double engineVolume;
     private T driver;
+    private boolean diagnosticsPassed;
 
 
     public String getBrand() {
@@ -60,4 +61,26 @@ public abstract class Transport<T extends Driver> implements Competing {
 
     public abstract void finish();
 
+    public boolean isDiagnosticsPassed() {
+        return diagnosticsPassed;
+    }
+
+    public boolean checkTransportNeedServise() {
+        try {
+            passDiagnostics();
+        } catch (TransportTypeException e) {
+            return false;
+        }
+        return true;
+    }
+
+    abstract boolean passDiagnostics() throws TransportTypeException;
+
+    public boolean isDiagnosticPassed() {
+        return diagnosticsPassed;
+    }
+
+     public void setDiagnosticsPassed(boolean diagnosticPassed) {
+        this.diagnosticsPassed = diagnosticsPassed;
+    }
 }

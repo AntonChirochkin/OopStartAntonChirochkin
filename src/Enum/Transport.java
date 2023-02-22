@@ -1,10 +1,12 @@
 package Enum;
 
+//
 public abstract class Transport<T extends Driver> implements Competing {
     private final String brand;
     private final String model;
     private double engineVolume;
     private T driver;
+    private boolean diagnosticsPassed;
 
 
     public String getBrand() {
@@ -51,14 +53,34 @@ public abstract class Transport<T extends Driver> implements Competing {
         this.engineVolume = engineVolume;
     }
 
+    public abstract Type getType();
+
+    public abstract void printTipe();
+
     public abstract void start();
+
     public abstract void finish();
 
-    @Override
-    public String toString () {
-        return "Transport: " +
-                "Марка - " + brand + "," +
-                " Модель - " + model + "," +
-                " Мощность двигателя - " + engineVolume;
+    public boolean isDiagnosticsPassed() {
+        return diagnosticsPassed;
+    }
+
+    public boolean checkTransportNeedServise() {
+        try {
+            passDiagnostics();
+        } catch (TransportTypeException e) {
+            return false;
+        }
+        return true;
+    }
+
+    abstract boolean passDiagnostics() throws TransportTypeException;
+
+    public boolean isDiagnosticPassed() {
+        return diagnosticsPassed;
+    }
+
+     public void setDiagnosticsPassed(boolean diagnosticPassed) {
+        this.diagnosticsPassed = diagnosticsPassed;
     }
 }

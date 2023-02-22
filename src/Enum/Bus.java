@@ -1,8 +1,15 @@
 package Enum;
-
+//
 public class Bus extends Transport<DriverD> {
-    public Bus(String brand, String model, double engineVolume, DriverD driver) {
+
+    Size size;
+    public Bus(String brand, String model, double engineVolume, DriverD driver, Size size) {
         super(brand, model, engineVolume, driver);
+        this.size = size;
+    }
+
+    Size getSize() {
+        return size;
     }
 
     @Override
@@ -14,6 +21,9 @@ public class Bus extends Transport<DriverD> {
     public void finish() {
         System.out.println("Автобус марки " + getBrand() + " закончил движение.");
     }
+
+
+
     @Override
     public void pitStop() {
         System.out.println("Пит-стоп автобуса");
@@ -33,5 +43,64 @@ public class Bus extends Transport<DriverD> {
         int maxVolume = 170;
         int maxSpeed = (int) (maxVolume + (maxVolume - minVolume) * Math.random()); // в данной строке мы привели значения к переменной int и создали формулу выборы случайного значения скорости в диапазоне от 100 до 200
         System.out.println("Максимальная скорость автобуса " + maxSpeed);
+    }
+    @Override
+    public String toString () {
+        return "Transport: " +
+                "Марка - " + getBrand() + "," +
+                " Модель - " + getModel() + "," +
+                " Мощность двигателя - " + getEngineVolume() + "," +
+                " водитель - " + getDriver().getName() +
+                " Вместительностью салона - " + size;
+    }
+    @Override
+    public Type getType() {
+        return Type.BUS;
+    }
+    @Override
+    public void printTipe() {
+        System.out.println(getBrand() + " " + getModel() + " " + size);
+    }
+
+//    @Override
+//    public boolean diagnostics() throws TransportTypeException {
+//        throw new TransportTypeException("");
+//    }
+    @Override
+    public boolean passDiagnostics() throws TransportTypeException {
+        throw new TransportTypeException("Автобусы диагностику проходить не должны");
+    }
+}
+
+enum Size{
+    XS (0,10),
+    S(11,25),
+    M(26,50),
+    L(51,80),
+    XL(81,120);
+
+    private int min;
+    private int max;
+
+    Size(int min, int max) {
+        this.min = min;
+        this.max = max;
+    }
+
+    Size() {
+    }
+    public int getMin() {
+        return min;
+    }
+
+    public int getMax() {
+        return max;
+    }
+
+    @Override
+    public String toString() {
+        return " от " +
+                 min +
+                ", до " + max;
     }
 }
